@@ -5,25 +5,28 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget topbarBase = Row(
-      children: [
-        Container(
-          height: 52,
-          width: 52,
-          color: Colors.amber,
-        ),
-      ],
+    ColorScheme colors = Theme.of(context).colorScheme;
+
+    PreferredSize appbar = PreferredSize(
+      preferredSize: const Size.fromHeight(52.0),
+      child: Row(
+        children: [
+          InkWell(
+            child: Container(
+              height: 52,
+              width: 52,
+              color: Colors.amber,
+            ),
+          ),
+        ],
+      ),
     );
 
-    Widget zeroDeviceOnbase = Column(children: [
-      topbarBase,
-      Container(
-        color: Colors.amber,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: colors.onPrimary,
+        body: appbar,
       ),
-    ]);
-
-    return Scaffold(
-      body: zeroDeviceOnbase,
     );
   }
 }
